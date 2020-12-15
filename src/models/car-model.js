@@ -12,8 +12,7 @@ export default class RacingCarGameModel {
 	addRacingCars = rawCarNames => {
 		this.racingCars = this.getCars(rawCarNames);
 
-		if (this.racingCars === '') {
-			this.racingCars = [];
+		if (this.racingCars.some(car => car.name === '')) {
 			alert("빈칸");
 			return;
 		}
