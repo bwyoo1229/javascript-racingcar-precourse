@@ -22,10 +22,10 @@ export default class RacingCarGameInput {
 		`;
 	}
 
-	bindCarNamesSubmit = submitCarNames => {
+	bindCarNamesSubmit = handler => {
 		const carNamesSubmit = document.getElementById('car-names-submit');
 		
-		carNamesSubmit.addEventListener('click', () => submitCarNames(this.getCarNamesInput()));
+		carNamesSubmit.addEventListener('click', () => handler(this.getCarNamesInput()));
 	}
 
 	getCarNamesInput = () => {
@@ -34,10 +34,10 @@ export default class RacingCarGameInput {
 		return carNamesInput.value;
 	}
 
-	bindRacingCountSubmit = submitRacingCount => {
+	bindRacingCountSubmit = handler => {
 		const racingCountSubmit = document.getElementById('racing-count-submit');
 
-		racingCountSubmit.addEventListener('click', () => submitRacingCount(this.getRacingCountInput()));	
+		racingCountSubmit.addEventListener('click', () => handler(this.getRacingCountInput()));	
 	}
 
 	getRacingCountInput = () => {

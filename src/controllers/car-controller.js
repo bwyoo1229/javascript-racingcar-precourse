@@ -1,6 +1,6 @@
 import RacingCarGameInput from '../views/input.js';
-import RacingCarGameModel from '../models/car-model.js';
 import RacingCarGameOutput from '../views/output.js';
+import RacingCarGameModel from '../models/car-model.js';
 
 export default class RacingCarGameController {
 	constructor() {
@@ -9,7 +9,9 @@ export default class RacingCarGameController {
 		this.racingCarGameModel = new RacingCarGameModel();
 
 		this.handleCarNamesSubmit();
-		this.displayRacingCarInput();
+		this.onRacingCarInput();
+		this.onRacingCountInput();
+		this.onRacingGameEnd();
 	}
 
 	handleCarNamesSubmit = () => {
@@ -20,7 +22,7 @@ export default class RacingCarGameController {
 		this.racingCarGameModel.addRacingCars(carNamesInput);
 	}
 
-	displayRacingCarInput = () => {
+	onRacingCarInput = () => {
 		this.racingCarGameModel.bindRenderRacingCarInput(this.renderRacingCarInput)
 	}
 
@@ -35,5 +37,21 @@ export default class RacingCarGameController {
 
 	submitRacingCount = racingCountInput => {
 		this.racingCarGameModel.addRacingCount(racingCountInput);
+	}
+
+	onRacingCountInput = () => {
+		this.racingCarGameModel.bindRenderRaceResult(this.renderRaceResult);
+	}
+
+	renderRaceResult = cars => {
+		this.racingCarGameOutput.renderRaceResult(cars);
+	}
+
+	onRacingGameEnd = () => {
+		this.racingCarGameModel.bindRenderWinners(this.renderWinners);
+	}
+
+	renderWinners = winners => {
+		this.racingCarGameOutput.renderWinners(winners);
 	}
 }
