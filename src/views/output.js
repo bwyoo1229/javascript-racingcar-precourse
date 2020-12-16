@@ -7,6 +7,7 @@ export default class RacingCarGameOutput {
 	renderRacingCarInput = () => {
 		const carGameContainer = document.getElementById('car-game-container');
 		const div = document.createElement('div');
+		div.setAttribute('id', 'input-container');
 		const h4 = document.createElement('h4');
 		h4.innerText = '시도할 횟수를 입력해주세요.';
 		const input = document.createElement('input');
@@ -32,13 +33,19 @@ export default class RacingCarGameOutput {
 			span.innerText = `${car.name}: ${'-'.repeat(car.distance)}`;
 			this.resultContainer.appendChild(span);
 		});
-		
+
 		this.resultContainer.appendChild(document.createElement('br'));
+	}
+
+	disableSubmit = () => {
+		const carNamesSubmit = document.getElementById('car-names-submit');
+
+		carNamesSubmit.disabled = true;;
 	}
 
 	renderWinners = winners => {
 		const winnerResult = document.createElement('div');
-		winnerResult.innerText = `Winners: ${winners.join(",")}`
+		winnerResult.innerText = `최종 우승자: ${winners.join(",")}`
 		this.resultContainer.appendChild(winnerResult);
 	}
 }

@@ -27,6 +27,7 @@ export default class RacingCarGameController {
 	}
 
 	renderRacingCarInput = () => {
+		this.racingCarGameOutput.disableSubmit();
 		this.racingCarGameOutput.renderRacingCarInput();
 		this.handleRacingCountSubmit();
 	}
